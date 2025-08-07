@@ -1,4 +1,4 @@
-name: Build APK
+name: Build APK with Gradle
 
 on:
   push:
@@ -22,10 +22,18 @@ jobs:
         distribution: 'temurin'
         
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-      
-    - name: Build APK
-      run: ./gradlew assembleRelease
+      run: |
+        chmod +x gradlew
+        ls -la gradlew
+        file gradlew
+        
+    - name: Validate Gradle Wrapper
+      run: |
+        ./gradlew --version
+        ./gradlew --help
+        
+    - name: Build APK with Gradle
+      run: ./gradlew assembleRelease --no-daemon --stacktrace
       
     - name: Upload APK
       uses: actions/upload-artifact@v4
