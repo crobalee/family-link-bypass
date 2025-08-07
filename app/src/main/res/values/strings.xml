@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">계정 설정 도우미</string>
+    <string name="start_bypass">패밀리 링크 우회 시작</string>
+    <string name="setup_account">구글 계정 설정</string>
+    <string name="bypass_status">우회 상태</string>
+    <string name="account_status">계정 상태</string>
+    <string name="permission_required">권한이 필요합니다</string>
+    <string name="accessibility_permission">접근성 서비스 권한을 활성화해주세요</string>
+    <string name="overlay_permission">다른 앱 위에 표시 권한을 활성화해주세요</string>
+    <string name="usage_stats_permission">사용 통계 권한을 활성화해주세요</string>
+    <string name="bypass_success">패밀리 링크 우회 성공!</string>
+    <string name="bypass_failed">패밀리 링크 우회 실패</string>
+    <string name="account_created">계정이 성공적으로 생성되었습니다</string>
+    <string name="account_failed">계정 생성에 실패했습니다</string>
+    <string name="accessibility_service_description">패밀리 링크 우회 및 구글 계정 자동 설정을 위한 접근성 서비스입니다.</string>
+</resources>
