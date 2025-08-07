@@ -21,24 +21,34 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         
-    - name: Check Gradle Wrapper files
+    - name: Check Gradle Wrapper files and permissions
       run: |
-        echo "Checking Gradle Wrapper files..."
+        echo "=== Checking Gradle Wrapper files ==="
         ls -la gradlew*
         ls -la gradle/wrapper/
-        echo "gradlew file exists: $(test -f gradlew && echo 'YES' || echo 'NO')"
-        echo "gradlew.bat file exists: $(test -f gradlew.bat && echo 'YES' || echo 'NO')"
+        echo ""
+        echo "=== File existence check ==="
+        echo "gradlew exists: $(test -f gradlew && echo 'YES' || echo 'NO')"
+        echo "gradlew.bat exists: $(test -f gradlew.bat && echo 'YES' || echo 'NO')"
         echo "gradle-wrapper.jar exists: $(test -f gradle/wrapper/gradle-wrapper.jar && echo 'YES' || echo 'NO')"
-        
-    - name: Grant execute permission for gradlew
-      run: |
-        chmod +x gradlew
-        ls -la gradlew
-        file gradlew
+        echo "gradle-wrapper.properties exists: $(test -f gradle/wrapper/gradle-wrapper.properties && echo 'YES' || echo 'NO')"
+        echo ""
+        echo "=== Execution permission check ==="
         echo "gradlew is executable: $(test -x gradlew && echo 'YES' || echo 'NO')"
+        
+    - name: Set execute permission for gradlew (if needed)
+      run: |
+        if [ ! -x gradlew ]; then
+          echo "Setting execute permission for gradlew..."
+          chmod +x gradlew
+          ls -la gradlew
+        else
+          echo "gradlew already has execute permission"
+        fi
         
     - name: Validate Gradle Wrapper
       run: |
+        echo "=== Testing Gradle Wrapper ==="
         ./gradlew --version
         ./gradlew --help
         
